@@ -1,0 +1,52 @@
+<div class="col-md-10">
+
+    <form ngNativeValidate #f="ngForm" class="row g-3" (ngSubmit)="registrar( f )">
+        <div class="col-md-6">
+            <label for="validationDefault01" class="form-label">Nombre</label>
+            <input [ngModel]="user.name" name="name" type="text" pattern="[A-Za-z0-9]{1,15}" class="form-control"
+                id="validationDefault01" placeholder="Geovany" required>
+        </div>
+        <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Apellido</label>
+            <input [ngModel]="user.family_name" name="family_name" type="text" class="form-control"
+                id="validationDefault02" placeholder="Ocana" required>
+        </div>
+        <div class="col-md-6">
+            <label for="validationDefaultUsername" class="form-label">Email</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2"><i class="fas fa-envelope"></i></span>
+                <input [ngModel]="user.email" name="email" type="text" class="form-control"
+                    id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" placeholder="correo@correo.com"
+                    required>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <label for="validationDefaultUsername" class="form-label">Telefono</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend3"><i class="fas fa-phone"></i></span>
+                <input [ngModel]="user.phone" name="phone" type="number" class="form-control"
+                    id="validationDefaultUsername" maxlength="10" aria-describedby="inputGroupPrepend3"
+                    placeholder="5586238800"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    required>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <label for="validationDefault04" class="form-label">Programa de Intrés</label>
+            <select [ngModel]="user.program" name="program" class="form-select" id="validationDefault04" required>
+                <option selected disabled value="">Seleccione una opción</option>
+                <option *ngFor="let program of programsFilter" value="{{program.id}}"> {{program.name}}</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="validationDefault05" class="form-label">Comentario</label>
+            <textarea [ngModel]="user.comment" name="comment" class="form-control" id="validationTextarea"
+                placeholder="Comentario"></textarea>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Registrar</button>
+        </div>
+    </form>
+</div>
